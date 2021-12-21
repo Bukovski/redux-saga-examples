@@ -1,6 +1,6 @@
 import { put, takeEvery } from "redux-saga/effects"
-import { ASYNC_DECREMENT, ASYNC_INCREMENT,
-	decrementCreator, incrementCreator } from "../reducers/counter.reducer";
+import CounterActionType from "./counter.type";
+import { decrementCreator, incrementCreator } from "./counter.action";
 
 const delay = (ms) => new Promise(res => setTimeout(res, ms))
 
@@ -16,6 +16,6 @@ function* decrementWorker() {
 
 
 export function* countWatcher() {
-	yield takeEvery(ASYNC_INCREMENT, incrementWorker) // следит за тем чтобы асинхронный watcher был выполнен
-	yield takeEvery(ASYNC_DECREMENT, decrementWorker)
+	yield takeEvery(CounterActionType.ASYNC_INCREMENT, incrementWorker) // следит за тем чтобы асинхронный watcher был выполнен
+	yield takeEvery(CounterActionType.ASYNC_DECREMENT, decrementWorker)
 }

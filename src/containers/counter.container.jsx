@@ -2,8 +2,8 @@ import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 
 import { Counter } from "../components";
-import { asyncDecrementCreator, asyncIncrementCreator } from "../store/reducers/counter.reducer";
-import { fetchUsers } from "../store/reducers/user.reducer";
+import { asyncDecrementCreator, asyncIncrementCreator } from "../store/counter/counter.action";
+import { fetchUsers } from "../store/user/user.action";
 
 
 const CounterContainer = () => {

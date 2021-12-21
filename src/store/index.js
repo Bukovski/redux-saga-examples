@@ -1,22 +1,21 @@
-import {applyMiddleware, combineReducers, createStore} from "redux";
+import {applyMiddleware, createStore} from "redux";
 import createSagaMiddleware from 'redux-saga';
+import logger from "redux-logger";
 
-import { rootWatcher } from "./sagas";
-
-import countReducer from "./reducers/counter.reducer";
-import userReducer from "./reducers/user.reducer";
-
+import rootReducer from "./root.reducer";
+import { rootWatcher } from "./root.saga";
 
 const sagaMiddleware = createSagaMiddleware();
 
-const rootReducer = combineReducers({
-	countReducer,
-	userReducer
-})
+const middlewares = [ sagaMiddleware ]; // <-- подключили Saga
+
+if (process.env.NODE_ENV === 'development') {
+	middlewares.push(logger);
+}
 
 export const store = createStore(
 	rootReducer,
-	applyMiddleware(sagaMiddleware) // <-- подключили Saga
+	applyMiddleware(...middlewares)
 )
 
 sagaMiddleware.run(rootWatcher)
