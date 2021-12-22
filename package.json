@@ -1,7 +1,18 @@
 {
-  "name": "react-redux-saga-examples",
+  "name": "redux-saga-examples",
   "version": "0.1.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bukovski/redux-saga-examples.git"
+  },
+  "author": "Kirill Bukovski",
+  "keywords": [
+    "redux saga",
+    "react saga",
+    "saga example",
+    "react styled-components"
+  ],
   "dependencies": {
     "@testing-library/jest-dom": "^5.15.1",
     "@testing-library/react": "^11.2.7",
