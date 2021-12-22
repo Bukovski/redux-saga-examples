@@ -31,7 +31,7 @@ export const Reversed = styled.span`
   line-height: 1;
   color: #fff;
   font-size: 15px;
-  background-color:#ef5350;
+  background-color: ${ ({ messageColor }) => (messageColor ? messageColor : "#ef5350") };
 	cursor: pointer;
 
   &:before, &:after {
@@ -41,14 +41,14 @@ export const Reversed = styled.span`
     right: -0.8em;
     position: absolute;
     top: 0;
-    border-top: 0.8em solid #ef5350;
+    border-top: 0.8em solid ${ ({ messageColor }) => (messageColor ? messageColor : "#ef5350") };
   }
 	
 	&:after {
     top: auto;
     bottom: 0;
     border-top: none;
-    border-bottom: 0.8em solid #ef5350;
+    border-bottom: 0.8em solid ${ ({ messageColor }) => (messageColor ? messageColor : "#ef5350") };
   }
 
   &.reversedRight {
@@ -92,14 +92,14 @@ export const Reversed = styled.span`
     &:after {
       top: auto;
       bottom: 0;
-      border-top: 0.8em solid #ef5350;
+      border-top: 0.8em solid ${ ({ messageColor }) => (messageColor ? messageColor : "#ef5350") };
       border-bottom: none;
     }
 		
     &:before {
       bottom: auto;
       top:0;
-      border-bottom: 0.8em solid #ef5350;
+      border-bottom: 0.8em solid ${ ({ messageColor }) => (messageColor ? messageColor : "#ef5350") };
       border-top: none;
     }
   }
