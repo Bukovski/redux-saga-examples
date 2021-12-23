@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Alert, Posts } from "../components";
+import { Alert, Loader, Posts } from "../components";
 import { useDispatch, useSelector } from "react-redux";
-import { createPost, hideAlert, showAlert } from "../store/posts/posts.action";
+import { createPost, fetchPosts, hideAlert, showAlert } from "../store/posts/posts.action";
 
 
 
@@ -68,6 +68,29 @@ const PostForm = () => {
 	)
 }
 
+const PostsAsync = () => {
+	const dispatch = useDispatch()
+	const posts = useSelector(state => state.posts.fetchedPosts)
+	const loading = useSelector(state => state.posts.loading)
+	
+	
+	return (
+		<Posts.Column>
+			<h2>Async Post</h2>
+			{ posts.length
+				? posts.map(post => <Posts.Card key={ post.id }>{ post.title }</Posts.Card>)
+				: <Posts.Input
+					type="button"
+					value="Load posts"
+					onClick={ () => dispatch(fetchPosts()) }
+				/>
+			}
+			{ loading && <Loader /> }
+		
+		</Posts.Column>
+	)
+}
+
 
 const PostsContainer = () => {
 	const syncPosts = useSelector(state => state.posts.posts);
@@ -82,18 +105,11 @@ const PostsContainer = () => {
 						<h2>Sync Post</h2>
 						{ syncPosts.length
 							? syncPosts.map(post => <Posts.Card key={ post.id }>{ post.title }</Posts.Card>)
-							: "No posts have been created yet\n"
+							: "No posts have been created yet"
 						}
 					</Posts.Column>
-					<Posts.Column>
-						<h2>Async Post</h2>
-						<Posts.Input type="button" value="Load posts"/>
-						<Posts.Card>Async Post</Posts.Card>
-						<Posts.Card>Async Post</Posts.Card>
-						<Posts.Card>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-						</Posts.Card>
-					</Posts.Column>
+					
+					<PostsAsync />
 				</Posts.Row>
 			</Posts>
 		</>
