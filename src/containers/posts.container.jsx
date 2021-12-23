@@ -27,7 +27,7 @@ const PostForm = () => {
 			
 			setTimeout(() => {
 				dispatch(hideAlert())
-			}, 3000);
+			}, 3100);
 			
 			return null;
 		}
@@ -69,7 +69,9 @@ const PostForm = () => {
 }
 
 
-const PostsContainer = (props) => {
+const PostsContainer = () => {
+	const syncPosts = useSelector(state => state.posts.posts);
+	
 	return (
 		<>
 			<PostForm />
@@ -78,10 +80,10 @@ const PostsContainer = (props) => {
 				<Posts.Row>
 					<Posts.Column>
 						<h2>Sync Post</h2>
-						Empty
-						<Posts.Card>Sync post</Posts.Card>
-						<Posts.Card>Sync post</Posts.Card>
-						<Posts.Card>Sync post</Posts.Card>
+						{ syncPosts.length
+							? syncPosts.map(post => <Posts.Card key={ post.id }>{ post.title }</Posts.Card>)
+							: "No posts have been created yet\n"
+						}
 					</Posts.Column>
 					<Posts.Column>
 						<h2>Async Post</h2>
