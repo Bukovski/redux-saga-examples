@@ -25,7 +25,7 @@ export const fetchThunkPosts = () => async dispatch => {
     setTimeout(() => {
       dispatch({ type: PostsActionType.FETCH_POSTS, payload: json })
       dispatch(hideLoader())
-    }, 500)
+    }, 5000)
   } catch (e) {
     dispatch(showAlert('Что-то пошло не так'))
     dispatch(hideLoader())

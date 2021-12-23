@@ -3,8 +3,8 @@ import { css } from "styled-components";
 
 export const themeLoader = {
 	particles: 100, // has to match nodes in dom
-	particleSize: 6,
-	radius: 100,
+	particleSize: 3,
+	radius: 80,
 	lapDuration: 3,
 }
 
@@ -15,9 +15,9 @@ export function createCSS(themeLoader) {
 	let styles = '';
 	
 	for (let i = particles; i; i--) {
-		const angle = (i / particles ) * 360;
-		
-		styles += `
+			const angle = ((i / particles) * 360).toFixed(1);
+
+			styles += `
 	  i:nth-child(${ i }) {
 	    transform:
 	            rotate( ${ angle }deg )
@@ -34,9 +34,9 @@ export function createCSS(themeLoader) {
 }
 
 export const Spinner = styled.div`
-  position: absolute;
+  position: relative;
   top: 50%;
-  left: 50%;
+  left: calc(50% - ${ props => props.themeLoader.radius / 2 }px);
   z-index: 2;
 
   perspective: 200px;

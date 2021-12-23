@@ -2,16 +2,19 @@ import React from "react";
 import { Spinner, themeLoader } from "./loader.style";
 
 
-function Loader({ ...restProps }) {
+function Loader({ dotsCount = 80, ...restProps }) {
 	const spinnerDots = () => {
 		const dots = [];
 		
-		for(let i = 100; i; i--) {
+		for(let i = dotsCount; i; i--) {
 			dots.push(<i key={ i }><b/></i>);
 		}
 		
 		return dots;
 	}
+	
+	themeLoader.particles = dotsCount;
+	themeLoader.radius = dotsCount / 1.5;
 	
 	return <Spinner { ...restProps } themeLoader={ themeLoader }>
 		{
