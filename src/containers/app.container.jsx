@@ -1,6 +1,6 @@
 import React from 'react';
 import { CounterContainer } from "./index";
-import { Alert, Loader } from "../components";
+import { Alert, Loader, Posts } from "../components";
 
 
 const AppContainer = () => {
@@ -9,6 +9,14 @@ const AppContainer = () => {
       <CounterContainer />
       
       <hr/>
+  
+      <Posts>
+        <Posts.Form>
+            <Posts.Title>Create new post</Posts.Title>
+            <Posts.Input type="text" placeholder="Enter text for new post"/>
+            <Posts.Input type="button" value="Create post"/>
+        </Posts.Form>
+      </Posts>
   
       {/*<Alert>*/}
       {/*  <Alert.Error>*/}
@@ -28,7 +36,7 @@ const AppContainer = () => {
       {/*  </Alert.Success>*/}
       {/*</Alert>*/}
   
-      <Loader />
+      {/*<Loader />*/}
       
     </div>
   );
