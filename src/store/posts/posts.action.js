@@ -15,3 +15,19 @@ export const showLoader = () => ({ type: PostsActionType.SHOW_LOADER });
 export const hideLoader = () => ({ type: PostsActionType.HIDE_LOADER });
 
 export const fetchPosts = () => ({ type: PostsActionType.REQUEST_POSTS });
+
+export const fetchThunkPosts = () => async dispatch => {
+  try {
+    dispatch(showLoader())
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=5')
+    const json = await response.json();
+	  
+    setTimeout(() => {
+      dispatch({ type: PostsActionType.FETCH_POSTS, payload: json })
+      dispatch(hideLoader())
+    }, 500)
+  } catch (e) {
+    dispatch(showAlert('Что-то пошло не так'))
+    dispatch(hideLoader())
+  }
+};

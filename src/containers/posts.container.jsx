@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Alert, Loader, Posts } from "../components";
-import { useDispatch, useSelector } from "react-redux";
-import { createPost, fetchPosts, hideAlert, showAlert } from "../store/posts/posts.action";
+import { connect, useDispatch, useSelector } from "react-redux";
+import { createPost, fetchPosts, fetchThunkPosts, hideAlert, showAlert } from "../store/posts/posts.action";
 
 
 
@@ -76,7 +76,7 @@ const PostsAsync = () => {
 	
 	return (
 		<Posts.Column>
-			<h2>Async Post</h2>
+			<h2>Async Saga Post</h2>
 			{ posts.length
 				? posts.map(post => <Posts.Card key={ post.id }>{ post.title }</Posts.Card>)
 				: <Posts.Input
@@ -90,6 +90,37 @@ const PostsAsync = () => {
 		</Posts.Column>
 	)
 }
+
+
+
+
+const PostsThunkAsync = ({ posts, loading, fetchThunkPosts }) => {
+	
+	return (
+		<Posts.Column>
+			<h2>Async Thunk Post</h2>
+			{ posts.length
+				? posts.map(post => <Posts.Card key={ post.id }>{ post.title }</Posts.Card>)
+				: <Posts.Input
+					type="button"
+					value="Load posts"
+					onClick={ () => fetchThunkPosts() }
+				/>
+			}
+			{ loading && <Loader /> }
+		
+		</Posts.Column>
+	)
+}
+
+const mapStateToProps = state => ({
+	posts: state.posts.fetchedPosts,
+	loading: state.posts.loading
+})
+
+const mapDispatchToProps = { fetchThunkPosts }
+
+const PostsThunk = connect(mapStateToProps, mapDispatchToProps)(PostsThunkAsync);
 
 
 const PostsContainer = () => {
@@ -110,6 +141,8 @@ const PostsContainer = () => {
 					</Posts.Column>
 					
 					<PostsAsync />
+					
+					<PostsThunk />
 				</Posts.Row>
 			</Posts>
 		</>
