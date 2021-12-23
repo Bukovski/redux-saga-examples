@@ -7,9 +7,13 @@ function Alert({ children, delay = 3000, ...restProps }) {
 	const [ visible, setVisible ] = useState(true);
 	
 	useEffect(() => {
-		setTimeout(() => {
+		const timer = setTimeout(() => {
 			setVisible(false);
 		}, delay);
+		
+		return () => {
+			clearTimeout(timer);
+		};
 	}, [ delay ]);
 	
 	return <Container

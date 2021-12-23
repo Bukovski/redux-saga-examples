@@ -47,7 +47,7 @@ export const FormInput = styled.input`
 
 
   &[type="text"] {
-	  width: 90%;
+	  width: 85%;
 	  padding: .6rem 1rem;
 	  
 	  &:focus {
@@ -55,7 +55,8 @@ export const FormInput = styled.input`
 	  }
   }
 
-  &[type="button"] {
+  &[type="button"],
+  &[type="submit"] {
     padding: 1rem 1.5rem;
     font-size: 1rem;
     cursor: pointer;
@@ -69,22 +70,7 @@ export const FormInput = styled.input`
 export const Row = styled.div`
   display: flex;
   flex-wrap: wrap;
-
-  @media (max-width: 1200px) {
-    max-width: 1140px;
-  }
-  
-	@media (max-width: 992px) {
-    max-width: 960px;
-  }
-  
-	@media (max-width: 768px) {
-    max-width: 720px;
-  }
-	
-  @media (max-width: 576px) {
-    max-width: 540px;
-  }
+  max-width: 100%;
 `
 
 export const Column = styled.div`
