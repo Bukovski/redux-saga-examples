@@ -65,3 +65,42 @@ export const FormInput = styled.input`
     }
   }
 `
+
+export const Row = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+
+  @media (max-width: 1200px) {
+    max-width: 1140px;
+  }
+  
+	@media (max-width: 992px) {
+    max-width: 960px;
+  }
+  
+	@media (max-width: 768px) {
+    max-width: 720px;
+  }
+	
+  @media (max-width: 576px) {
+    max-width: 540px;
+  }
+`
+
+export const Column = styled.div`
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+	`
+
+export const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+	margin: 2px;
+	padding: 5px 12px;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: 0.25rem;
+`

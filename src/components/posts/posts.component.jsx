@@ -1,21 +1,18 @@
 import React from "react";
-import { Container, Form, FormInput, FormTitle } from "./posts.style";
+import { Card, Column, Container, Form, FormInput, FormTitle, Row } from "./posts.style";
 
 
 function Posts({ children, ...restProps }) {
 	return <Container { ...restProps }>{ children }</Container>;
 }
 
-	// return <Form >
-	// 		<FormTitle>Welcome</FormTitle>
-	// 		<FormInput type="text" placeholder="Enter text for new post"/>
-	// 		<FormInput type="button" value="Send text"/>
-	// </Form>
-
 Posts.Form = ({ children, ...restProps }) => <Form { ...restProps }>{ children }</Form>
 Posts.Title = ({ children }) => <FormTitle>{ children }</FormTitle>;
 Posts.Input = ({ ...restProps }) => <FormInput { ...restProps }/>;
 
+Posts.Row = ({ children, ...restProps }) => <Row { ...restProps }>{ children }</Row>
+Posts.Column = ({ children }) => <Column>{ children }</Column>
+Posts.Card = ({ children }) => <Card>{ children }</Card>
 
 
 export default Posts;
