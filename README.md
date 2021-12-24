@@ -10,6 +10,8 @@ These are the sample code for `redux-saga`.
 If my work is useful to you, I will be glad.
 Enjoy!
 
+[Live page](https://bukovski.github.io/redux-saga-examples/)
+
 ## Installation and Running
 
 ```sh
@@ -28,7 +30,7 @@ npm run start
 - [redux-saga](https://redux-saga.js.org/) - async data middleware for Redux, intercept actions with side effects and handle them, Redux reducers remain pure.
 - [styled-components](https://styled-components.com/) improved styling of react components
 
-
+![screen-page](./full-page.jpg)
 
 
 
