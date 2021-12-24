@@ -25,10 +25,6 @@ const PostForm = () => {
 		if (!title.trim()) {
 			dispatch(showAlert('Post title cannot be empty'));
 			
-			setTimeout(() => {
-				dispatch(hideAlert())
-			}, 3100);
-			
 			return null;
 		}
 		

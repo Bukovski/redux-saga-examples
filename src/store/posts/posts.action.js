@@ -1,4 +1,6 @@
 import PostsActionType from "./posts.type";
+import { useDispatch } from "react-redux";
+
 
 export const createPost = post => ({
 	type: PostsActionType.CREATE_POST,
@@ -6,10 +8,16 @@ export const createPost = post => ({
 })
 
 export const hideAlert = () => ({ type: PostsActionType.HIDE_ALERT })
-export const showAlert = text => ({
-	type: PostsActionType.SHOW_ALERT,
-	payload: text
-})
+export const showAlert = text => dispatch => {
+	setTimeout(() => {
+		dispatch(hideAlert());
+	}, 3100);
+	
+	dispatch({
+		type: PostsActionType.SHOW_ALERT,
+			payload: text
+	})
+}
 
 export const showLoader = () => ({ type: PostsActionType.SHOW_LOADER });
 export const hideLoader = () => ({ type: PostsActionType.HIDE_LOADER });

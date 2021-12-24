@@ -5,6 +5,7 @@ import logger from "redux-logger";
 
 import rootReducer from "./root.reducer";
 import { rootWatcher } from "./root.saga";
+import { forbiddenWordsMiddleware } from "./posts/posts.middleware";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -15,6 +16,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 middlewares.push(thunk);
+middlewares.push(forbiddenWordsMiddleware);
 
 export const store = createStore(
 	rootReducer,
