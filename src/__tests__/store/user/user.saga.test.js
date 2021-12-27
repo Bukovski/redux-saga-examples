@@ -40,8 +40,4 @@ describe('User Saga', () => {
 		
 		expect(generator.next().done).toBeTruthy();
 	})
-	
-	it("getFetchJson", () => {
-		console.log(getFetchJson(mockFetchPromise))
-	})
 })

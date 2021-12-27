@@ -2,14 +2,15 @@ import { put, takeEvery } from "redux-saga/effects"
 import CounterActionType from "./counter.type";
 import { decrementCreator, incrementCreator } from "./counter.action";
 
-const delay = (ms) => new Promise(res => setTimeout(res, ms))
 
-function* incrementWorker() {
+export const delay = (ms) => new Promise(res => setTimeout(true, ms))
+
+export function* incrementWorker() {
 	yield delay(1000)
 	yield put(incrementCreator())
 }
 
-function* decrementWorker() {
+export function* decrementWorker() {
 	yield delay(1000) // задержка для асинхронности
 	yield put(decrementCreator()) // добавили action
 }
