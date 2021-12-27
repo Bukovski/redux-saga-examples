@@ -3,19 +3,21 @@ import PostsActionType from "./posts.type";
 import { hideLoader, showAlert, showLoader } from "./posts.action";
 
 
-async function fetchPosts() {
+export async function fetchPosts() {
 	const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=5')
-	return await response.json()
+	return await response.json();
 }
 
-function* sagaWorker() {
+export function* sagaWorker() {
+	yield put(showLoader());
+	
 	try {
-		yield put(showLoader())
-		const payload = yield call(fetchPosts)
+		const payload = yield call(fetchPosts);
+		
 		yield put({ type: PostsActionType.FETCH_POSTS, payload })
-		yield put(hideLoader())
 	} catch (e) {
 		yield put(showAlert('Something went wrong'))
+	} finally {
 		yield put(hideLoader())
 	}
 }
