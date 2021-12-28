@@ -10,6 +10,5 @@ describe("User Reducer", () => {
 	
 	it("should handle 'SET_USERS' action", () => {
 		expect(userReducer({}, { type: UserActionType.SET_USERS, payload: mockUserJson })).toEqual({ users: mockUserJson });
-		expect(userReducer({}, { type: UserActionType.SET_USERS, payload: mockUserJson })).toEqual({ users: mockUserJson });
 	})
 });
