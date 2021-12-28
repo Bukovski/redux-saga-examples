@@ -1,5 +1,5 @@
 import PostsActionType from "./posts.type";
-import { hideAlert, showAlert } from "./posts.action";
+import { showAlert } from "./posts.action";
 
 
 const forbidden = ['fuck', 'spam', 'php']

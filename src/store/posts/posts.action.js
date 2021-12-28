@@ -1,5 +1,4 @@
 import PostsActionType from "./posts.type";
-import { useDispatch } from "react-redux";
 
 
 export const createPost = post => ({

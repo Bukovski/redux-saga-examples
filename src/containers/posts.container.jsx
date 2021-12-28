@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Alert, Loader, Posts } from "../components";
 import { connect, useDispatch, useSelector } from "react-redux";
-import { createPost, fetchPosts, fetchThunkPosts, hideAlert, showAlert } from "../store/posts/posts.action";
+import { createPost, fetchPosts, fetchThunkPosts, showAlert } from "../store/posts/posts.action";
 
 
 

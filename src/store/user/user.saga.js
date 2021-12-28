@@ -1,9 +1,10 @@
 import { put, takeEvery, call } from "redux-saga/effects";
-import { setUsers } from "./user.action";
+import Api from "../../config/api.config";
 import UserActionType from "./user.type";
+import { setUsers } from "./user.action";
 
 
-const fetchUsersFromApi = () => fetch('https://jsonplaceholder.typicode.com/users?_limit=10')
+const fetchUsersFromApi = () => fetch(Api.getUsers());
 
 export const getFetchJson = (data) => new Promise(res => res(data.json()));
 
