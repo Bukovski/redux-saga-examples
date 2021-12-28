@@ -10,6 +10,8 @@ These are the sample code for `redux-saga`.
 If my work is useful to you, I will be glad.
 Enjoy!
 
+There are `tests` for reducers and sagas.
+
 [Live page](https://bukovski.github.io/redux-saga-examples/)
 
 ## Installation and Running
